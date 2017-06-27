@@ -7,8 +7,10 @@ import numpy as np
 # Y      - array with best move prediction  of size [1 x nn_output_dim] [1x9]
 #
 class AiPlayer:
-    def __init__(self, theta1=None, theta2=None):
-        np.random.seed(10)
+    def __init__(self, seed=None, theta1=None, theta2=None):
+        if seed is not None:
+            np.random.seed(seed)
+
         self.bias1 = np.zeros((9, 1))
 
         if theta1 is None:
@@ -35,8 +37,9 @@ class AiPlayer:
 
         return y.tolist().index(max(y))
 
-    def teach_me(self):
-        pass
+    def teach_me(self, theta1, theta2):
+        self.theta1 = theta1
+        self.theta2 = theta2
 
     @staticmethod
     def sigmoid(z):

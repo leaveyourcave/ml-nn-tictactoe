@@ -13,15 +13,15 @@ class GameManager:
 
     def play(self):
         # Logging
-        print "Starts: %d" % self.turn
+        # print "Starts: %d" % self.turn
         ###############
 
         while self.game.get_game_state() == "":
             next_move = self._ask_player_for_next_move()
 
             # Logging
-            self.game.display_board()
-            print "Player [%2d] makes move: %d" % (self.turn, next_move)
+            # self.game.display_board()
+            # print "Player [%2d] makes move: %d" % (self.turn, next_move)
             ###############
 
             if self.game.is_move_possible(next_move):
@@ -35,13 +35,13 @@ class GameManager:
 
     def end_game(self, state):
         # Logging
-        print "End with status: [%s]" % state
+        # print "End with status: [%s]" % state
         ###############
 
         player_x_points = 0
         player_o_points = 0
 
-        if state == "WRONG_MOVE":
+        if state == "WRONG_MOVE": #TODO we can try to multiply it by (9 - turn_number)
             if self.turn == 1:
                 player_x_points = -2
                 player_o_points = 1
