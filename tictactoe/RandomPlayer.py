@@ -2,7 +2,9 @@ import random
 
 
 class RandomPlayer:
-    def __init__(self):
+    def __init__(self, seed=None):
+        if seed is not None:
+            random.seed(seed)
         pass
 
     def make_next_move(self, squares):
